@@ -9,11 +9,17 @@ class Recursos extends REST_Controller {
      * búsqueda.
      */
     function index_get() {
-        $recursos = array(
+	$this->load->model('recurso_model');
+        $this->load->database();
+	$recursos = $this->recurso_model->get_all();
+
+        /*
+	$recursos = array(
             array('id' => '1'),
             array('id' => '2'),
             array('id' => '3')
         );
+	**/
 
         $this->response($recursos, 200);
     }
