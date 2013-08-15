@@ -43,8 +43,8 @@ class Recurso_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_all() {
-        $query = $this->db->get('recurso');
+    public function get_all($sitio) {
+        $query = $this->db->get_where('recurso', array('sitio'=>$sitio));
         return $query->result();
     }
     

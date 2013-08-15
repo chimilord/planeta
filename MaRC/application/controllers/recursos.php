@@ -11,7 +11,7 @@ class Recursos extends REST_Controller {
     function index_get() {
         $this->load->model('recurso_model');
         $this->load->database();
-        $recursos = $this->recurso_model->get_all();
+        $recursos = $this->recurso_model->get_all($this->get('sitio'));
 
         $this->response($recursos, 200);
     }
