@@ -20,7 +20,7 @@
         </style>
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/docs.css">
-        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>resources/less/main.less">
+        <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>resources/less/loader.less">
 
         <script src="<?php echo base_url(); ?>resources/js/vendor/less-1.3.3.min.js"></script>
         <script src="<?php echo base_url(); ?>resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -31,7 +31,7 @@
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -42,24 +42,24 @@
                         <ul id="veo-login-item" class="nav pull-right">
                             <?php if ($this->ion_auth->logged_in()) { ?>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <?php echo $this->ion_auth->user()->row()->first_name; ?> <b class="caret"></b></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-cog"></i>
+                                        <span><?php echo $this->ion_auth->user()->row()->first_name; ?></span> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">    
-                                        <li><a href="#">Perfil</a></li>
+                                        <li><a href="#"><i class="icon icon-user"></i> <span>Perfil</span></a></li>
                                         <li class="divider"></li>
                                         <?php if ($this->ion_auth->is_admin()) { ?>
-                                            <li><a href="<?php echo base_url(); ?>/auth/groups">Groups</a></li>
-                                            <li><a href="<?php echo base_url(); ?>/auth/groups">Users</a></li>
+                                            <li><a href="<?php echo base_url(); ?>auth/groups"><i class="icon icon-th-large"></i> <span>Groups</span></a></li>
+                                            <li><a href="<?php echo base_url(); ?>auth/groups"><i class="icon icon-user"></i> <span>Users</span></a></li>
                                             <li class="divider"></li>
-                                            <li><a href="#">Settings</a></li>
-                                            <li><a href="#">Support</a></li>
+                                            <!--<li><a href="#">Settings</a></li>-->
+                                            <li><a href="#"><i class="icon icon-envelope"></i> <span>Support</span></a></li>
                                             <li class="divider"></li>
-                                            <li><a href="<?php echo base_url(); ?>auth/logout">Salir</a></li>
+                                            <li><a href="<?php echo base_url(); ?>auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
                                         <?php } else { ?>
                                             <li><a href="#">Settings</a></li>
                                             <li><a href="#">Support</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="<?php echo base_url(); ?>auth/logout">Salir</a></li>
+                                            <li><a href="<?php echo base_url(); ?>auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
                                         <?php } ?>
                                     </ul>
                                 </li>
@@ -72,4 +72,20 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
+
+            <?php if ($this->ion_auth->logged_in()) { ?>
+            <div class="row-fluid sections">
+
+                <div class="span2">
+                    <div class="sidebar-nav">
+                        <ul class="nav">
+                            <li class="active"><a href="<?php echo base_url("auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
+                            <li><a href="<?php echo base_url("auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
+                            <li><a href="index.html"><i class="icon-white icon-file"></i> <span>Sitios</span></a></li>
+                            <li><a href="<?php echo base_url("auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
+                            <li><a href="index.html"><i class="icon-white icon-wrench"></i> <span>Mantenimiento</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <?php } ?>

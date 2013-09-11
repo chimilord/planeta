@@ -1,31 +1,47 @@
-<h1><?php echo lang('index_heading'); ?></h1>
-<p><?php echo lang('index_subheading'); ?></p>
+<div class="span10 nomargin well" id="section-actions">
 
-<div id="infoMessage"><?php echo $message; ?></div>
+    <div class="section-title">
+        <h3>Usuarios</h3>
+    </div>
 
-<table cellpadding=0 cellspacing=10>
-    <tr>
-        <th><?php echo lang('index_fname_th'); ?></th>
-        <th><?php echo lang('index_lname_th'); ?></th>
-        <th><?php echo lang('index_email_th'); ?></th>
-        <th><?php echo lang('index_groups_th'); ?></th>
-        <th><?php echo lang('index_status_th'); ?></th>
-        <th><?php echo lang('index_action_th'); ?></th>
-    </tr>
-    <?php foreach ($users as $user): ?>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li class="active">Usuarios</li>
+    </ul>
+
+    <div id="infoMessage"><?php echo $message; ?></div>
+
+    <table class="table table-hover">
+        <thead>
         <tr>
-            <td><?php echo $user->first_name; ?></td>
-            <td><?php echo $user->last_name; ?></td>
-            <td><?php echo $user->email; ?></td>
-            <td>
-                <?php foreach ($user->groups as $group): ?>
-                    <?php echo anchor("auth/edit_group/" . $group->id, $group->name); ?><br />
-                <?php endforeach ?>
-            </td>
-            <td><?php echo ($user->active) ? anchor("auth/deactivate/" . $user->id, lang('index_active_link')) : anchor("auth/activate/" . $user->id, lang('index_inactive_link')); ?></td>
-            <td><?php echo anchor("auth/edit_user/" . $user->id, 'Edit'); ?></td>
+            <th><?php echo "Nombre" ?></th>
+            <th><?php echo "Apellidos" ?></th>
+            <th><?php echo "Username" ?></th>
+            <th><?php echo "E-mail" ?></th>
+            <th><?php echo "Grupos" ?></th>
+            <th><?php echo "Estado" ?></th>
+            <th><?php echo "Acciones" ?></th>
         </tr>
-    <?php endforeach; ?>
-</table>
+        </thead>
+        <tbody>
+        <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?php echo $user->first_name; ?></td>
+                <td><?php echo $user->last_name; ?></td>
+                <td><?php echo $user->username; ?></td>
+                <td><?php echo $user->email; ?></td>
+                <td>
+                    <?php foreach ($user->groups as $group): ?>
+                        <?php echo anchor("auth/edit_group/" . $group->id, $group->name); ?><br />
+                    <?php endforeach ?>
+                </td>
+                <td><?php echo ($user->active) ? anchor("auth/deactivate/" . $user->id, lang('index_active_link')) : anchor("auth/activate/" . $user->id, lang('index_inactive_link')); ?></td>
+                <td><?php echo anchor("auth/edit_user/" . $user->id, 'Edit'); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 
-<p><?php echo anchor('auth/create_user', lang('index_create_user_link')) ?> | <?php echo anchor('auth/create_group', lang('index_create_group_link')) ?></p>
+    <p><?php echo anchor('auth/create_user', "Crear usuario") ?> | <?php echo anchor('auth/create_group', "Crear grupo") ?></p>
+
+</div>

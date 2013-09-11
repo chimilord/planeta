@@ -1,18 +1,54 @@
-<h1><?php echo lang('deactivate_heading');?></h1>
-<p><?php echo sprintf(lang('deactivate_subheading'), $user->username);?></p>
+<div class="span10 nomargin well" id="section-actions">
 
-<?php echo form_open("auth/deactivate/".$user->id);?>
+    <div class="section-title">
+        <h3>Usuarios</h3>
+    </div>
 
-  <p>
-  	<?php echo lang('deactivate_confirm_y_label', 'confirm');?>
-    <input type="radio" name="confirm" value="yes" checked="checked" />
-    <?php echo lang('deactivate_confirm_n_label', 'confirm');?>
-    <input type="radio" name="confirm" value="no" />
-  </p>
+    <ul class="breadcrumb">
+        <li><a href="<?php echo base_url(); ?>">Home</a> <span class="divider">/</span></li>
+        <li><?php echo anchor('auth/users', 'Usuarios'); ?><span class="divider">/</span></li>
+        <li class="active">Desactivar usuario</li>
+    </ul>
 
-  <?php echo form_hidden($csrf); ?>
-  <?php echo form_hidden(array('id'=>$user->id)); ?>
+    <div class="span6">
+        <?php echo form_open("auth/deactivate/" . $user->id); ?>
 
-  <p><?php echo form_submit('submit', lang('deactivate_submit_btn'));?></p>
+        <fieldset>
+            <legend>Desactivar</legend>
 
-<?php echo form_close();?>
+            <div style="padding-bottom: 15px;">
+                <?php echo sprintf('¿Está seguro que desea desactivar al usuario \'%s\'?', $user->username); ?>
+            </div>
+
+            <label class="radio">
+                <input type="radio" name="confirm" id="optionsRadios1" value="yes" checked>
+                Confirmar
+            </label>
+            <label class="radio">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                Cancelar
+            </label>
+
+            <?php echo form_hidden($csrf); ?>
+            <?php echo form_hidden(array('id' => $user->id)); ?>
+
+            <div class="control-group">
+                <div class="controls">
+                    <?php
+                    $data = array(
+                    "name" => "submit",
+                    "type" => "submit",
+                    "content" => "Aceptar",
+                    "class" => "btn btn-info"
+                    );
+                    echo form_button($data);
+                    ?>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <?php echo form_close(); ?>
+    </div>
+
+</div>

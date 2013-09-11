@@ -18,7 +18,7 @@
             }
         </style>
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/main.css">
+<!--        <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/main.css">-->
 
         <script src="<?php echo base_url(); ?>resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>

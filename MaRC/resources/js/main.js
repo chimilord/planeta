@@ -32,6 +32,10 @@
             $(this).find('a').removeClass('section-link-hover');
         });
 
+        $('#sites .site').click(function() {
+            $(this).getSiteInfo();
+        });
+
     };
 
     $.fn.clearForm = function() {
@@ -47,6 +51,20 @@
                 this.selectedIndex = -1;
         });
     };
+
+    $.fn.getSiteInfo = function() {
+        var site = $(this).data('site');
+        $.ajax({
+            type: 'POST',
+            url: '/site/detail/',
+            data: {clave: site},
+            dataType: 'json',
+            success: function(data) {
+                alert(data);
+            }
+        })
+    }
+
 
 })(jQuery);
 

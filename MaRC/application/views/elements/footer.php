@@ -1,3 +1,6 @@
+<?php if ($this->ion_auth->logged_in()) { ?>
+</div>
+<?php } ?>
 
 </div> <!-- /container -->
 

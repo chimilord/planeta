@@ -4,8 +4,8 @@
     }
 
     var data = {
-        base: 'http://localhost/~ismael', // URL base a la que se hace las peticiones
-        url: '/marc/index.php/recursos/' 
+        base: 'http://localhost/CradyDesign/CentralCMS', // URL base a la que se hace las peticiones
+        url: '/MaRC/index.php/recursos/' 
     }
 
 
