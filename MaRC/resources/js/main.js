@@ -13,8 +13,9 @@
     $.marc.init = function() {
 
         var nowDateTime = new Date();
-        var now = new Date(nowDateTime.getFullYear(), nowDateTime.getMonth(), nowDateTime.getDate(),
-                0, 0, 0, 0);
+        var now = new Date(nowDateTime.getFullYear(), nowDateTime.getMonth(), nowDateTime.getDate(), 0, 0, 0, 0);
+        
+        $('#current-site').hide();
 
         /* Login functions */
         errors = $('#infoMessage').find('p').length;
@@ -53,16 +54,14 @@
     };
 
     $.fn.getSiteInfo = function() {
+        $('#current-site').show();
+        var name = $(this).data('name');
+        var url = $(this).data('url');
         var site = $(this).data('site');
-        $.ajax({
-            type: 'POST',
-            url: '/site/detail/',
-            data: {clave: site},
-            dataType: 'json',
-            success: function(data) {
-                alert(data);
-            }
-        })
+        $('.current-name').html(name);
+        $('.current-url').html('<a href="' + url + '" target="_blank">' + url + '</a>');
+        $('.current-site').html(site);
+        
     }
 
 
