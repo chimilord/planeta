@@ -30,9 +30,13 @@ class Recursos extends REST_Controller {
      * Crea un recurso.
      */
     function index_post() {
-        $data = new stdClass();
-        $data->id = $this->post('id');
-
+        $data = array(
+            'sitio' => $this->post('sitio'),
+            'domId' => $this->post('domId'),
+            'contenido' => $this->post('contenido')
+        );
+        
+        $this->db->insert('recurso', $data); 
         $this->response($data, 200);
     }
 
