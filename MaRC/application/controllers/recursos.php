@@ -30,7 +30,11 @@ class Recursos extends REST_Controller {
      * Crea un recurso.
      */
     function index_post() {
+        $this->load->model('recurso_model');
+        $this->load->database();
+        $this->load->helper('uuid_helper');
         $data = array(
+            'uuid' => gen_uuid(),
             'sitio' => $this->post('sitio'),
             'domId' => $this->post('domId'),
             'contenido' => $this->post('contenido')
@@ -59,6 +63,7 @@ class Recursos extends REST_Controller {
 
         $this->response($data, 200);
     }
+    
 
 }
 

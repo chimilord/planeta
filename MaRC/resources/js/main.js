@@ -14,8 +14,9 @@
 
         var nowDateTime = new Date();
         var now = new Date(nowDateTime.getFullYear(), nowDateTime.getMonth(), nowDateTime.getDate(), 0, 0, 0, 0);
-        
+
         $('#current-site').hide();
+        $('#create-resource #create').click(handlers.createResource);
 
         /* Login functions */
         errors = $('#infoMessage').find('p').length;
@@ -61,8 +62,33 @@
         $('.current-name').html(name);
         $('.current-url').html('<a href="' + url + '" target="_blank">' + url + '</a>');
         $('.current-site').html(site);
-        
+
     }
+
+    handlers.createResource = function() {
+        var sitio = $('#sitio').val();
+        var contenido = $('#contenido').val();
+        var domId = $('#domId').val();
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/recursos/',
+            dataType: 'jsonp',
+            data: {
+                format: 'jsonp',
+                sitio: sitio,
+                contenido: contenido,
+                domId: domId
+            },
+            success: function(response) {
+                alert(response);
+            },
+            error: function() {
+                alert('Error: no fue posible insertr el recurso.');
+            }
+        });
+    }
+
+    handlers.cleanForm = function() { }
 
 
 })(jQuery);

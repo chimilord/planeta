@@ -12,9 +12,14 @@ class Sitios extends CI_Controller {
     }
 
     public function index() {
-        $this->_render_page('auth/index');
+        $this->_render_page('recursos/index');
     }
 
+    public function recursos() {
+        $this->data['recursos'] = $this->recurso_model->get_recursos();
+        $this->_render_page('recursos/all', $this->data);
+    }
+    
     public function create() {
 
         $this->data['title'] = "Create Recurso";

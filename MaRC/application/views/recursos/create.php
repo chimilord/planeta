@@ -6,65 +6,48 @@
 
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url(); ?>">Home</a> <span class="divider">/</span></li>
-        <li><?php echo anchor('recursos/', 'Recursos'); ?><span class="divider">/</span></li>
+        <li><?php echo anchor('sitios/recursos', 'Recursos'); ?><span class="divider">/</span></li>
         <li class="active">Crear recurso</li>
     </ul>
 
     <div class="span6">
 
-        <?php echo form_open("sitios/create", array("class" => "form-horizontal")); ?>
+        <form class="form-horizontal" id="create-resource">
+            <fieldset>
+                <legend>Crear</legend>
 
-        <fieldset>
-            <legend>Crear</legend>
-
-            <div class="control-group">
-                <?php echo form_label("Sitio", "sitio", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($sitio); ?>
+                <div class="control-group">
+                    <label class="control-label" for="sitio">Sitio</label>
+                    <div class="controls">
+                        <input type="text" id="sitio" value="" name="sitio">
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Contenido", "contenido", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_textarea($contenido); ?>
+                <div class="control-group">
+                    <label class="control-label" for="contenido">Contenido</label>
+                    <div class="controls">
+                        <textarea type="textarea" id="contenido" rows="10" cols="40" name="contenido"></textarea>
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Id", "domId", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($domId); ?>
+                <div class="control-group">
+                    <label class="control-label" for="domId">Id</label>
+                    <div class="controls">
+                        <input type="text" id="domId" value="" name="domId">
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    $data = array(
-                        "name" => "create",
-                        "id" => "create",
-                        "type" => "submit",
-                        "content" => "Crear",
-                        "class" => "btn btn-info"
-                    );
-                    $data_cancel = array(
-                        "name" => "cancel_user",
-                        "id" => "cancel_user",
-                        "type" => "button",
-                        "content" => "Cancelar",
-                        "class" => "btn btn-info",
-                        "style" => "margin-left: 15px;"
-                    );
-                    echo form_button($data);
-                    echo form_button($data_cancel);
-                    ?>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-info" id="create">Crear</button>
+                        <button type="button" class="btn btn-info" id="cancel">Cancelar</button>
+                    </div>
                 </div>
-            </div>
 
-        </fieldset>
+            </fieldset>
 
-        <?php echo form_close(); ?>
+        </form>
+
     </div>
     <div class="span4 errorMessage" id="infoMessage"><?php echo $message; ?></div>
 

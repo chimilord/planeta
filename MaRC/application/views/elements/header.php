@@ -83,6 +83,7 @@
                             <li class="active"><a href="<?php echo base_url("auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
                             <li><a href="<?php echo base_url("auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
                             <li><a href="index.html"><i class="icon-white icon-file"></i> <span>Sitios</span></a></li>
+                            <li><a href="<?php echo base_url("sitios/recursos")?>"><i class="icon-white icon-list-alt"></i> <span>Recursos</span></a></li>
                             <li><a href="<?php echo base_url("auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
                             <li><a href="index.html"><i class="icon-white icon-wrench"></i> <span>Mantenimiento</span></a></li>
                         </ul>

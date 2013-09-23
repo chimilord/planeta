@@ -1,37 +1,37 @@
 <?php
 
 if (!defined('BASEPATH'))
-   exit('No direct script access allowed');
+    exit('No direct script access allowed');
 
 class Recurso_model extends CI_Model {
-    
+
     /**
      * El id del recurso en la base de datos.
      * @var type 
      */
     var $id = 0;
-    
+
     /**
      * El uuid del recurso.
      * 
      * @var type 
      */
     var $uuid = '';
-    
+
     /**
      * El contenido html del recurso.
      * 
      * @var type 
      */
     var $contenido = '';
-    
+
     /**
      * El id del DOM en donde se muestra el contenido de este recurso.
      * 
      * @var type 
      */
     var $domId = '';
-    
+
     /**
      * El sitio al que pertenece este recurso.
      * 
@@ -44,10 +44,18 @@ class Recurso_model extends CI_Model {
     }
 
     public function get_all($sitio) {
-        $query = $this->db->get_where('recurso', array('sitio'=>$sitio));
+        $query = $this->db->get_where('recurso', array('sitio' => $sitio));
         return $query->result();
     }
-    
+
+    public function get_recursos() {
+        $query = $this->db->get('recurso');
+        return $query->result();
+    }
+
+//    public function create($data) {
+//        return $this->db->insert('recurso', $data);
+//    }
 }
 
 ?>
