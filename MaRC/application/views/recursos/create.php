@@ -44,7 +44,7 @@
                                 <div class="label-toggle-switch make-switch switch-small"
                                      data-on="success" data-off="danger" 
                                      data-on-label="Activo" data-off-label="Inactivo">
-                                    <input type="checkbox" name="estado" id="estado" checked="checked">
+                                    <input type="checkbox" name="estatus" id="estatus" checked="checked">
                                 </div>
                             </label>
                         </div>

@@ -38,7 +38,7 @@ class Recursos extends REST_Controller {
             'sitio' => $this->post('sitio'),
             'domId' => $this->post('domId'),
             'contenido' => trim($this->post('contenido')),
-            'estado' => $this->post('estado')
+            'estatus' => $this->post('estatus')
         );
 
         $this->db->insert('recurso', $data);
@@ -75,11 +75,19 @@ class Recursos extends REST_Controller {
     }
 
     function estatus_put() {
-       $data = new stdClass();
-       $data->id = $this->put('id');
+        //$data = new stdClass();
 
-       $this->response($data, 200);
-   }
+        $this->load->model('recurso_model');
+        $this->load->database();
+        $data = array(
+            'estatus' => ($this->put('estatus') === "1") ? 0 : 1
+        );
+
+        $this->db->where('id', $this->put('id'));
+        $this->db->update('recurso', $data);
+
+        $this->response($data, 200);
+    }
 
 }
 

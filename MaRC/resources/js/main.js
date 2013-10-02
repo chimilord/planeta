@@ -65,13 +65,13 @@
         $('.current-url').html('<a href="' + url + '" target="_blank">' + url + '</a>');
         $('.current-site').html(site);
 
-    }
+    };
 
     handlers.createResource = function() {
         var sitio = $('#sitio').val();
         var contenido = $('#contenido').val();
         var domId = $('#domId').val();
-        var estado = ($('#estado').prop('checked')) ? 1 : 0;
+        var estatus = ($('#estatus').prop('checked')) ? 1 : 0;
         $.ajax({
             type: 'POST',
             url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/',
@@ -80,7 +80,7 @@
                 sitio: sitio,
                 contenido: contenido,
                 domId: domId,
-                estado: estado
+                estatus: estatus
             },
             success: function(response) {
                 alert('El recurso se insertó correctamente.');
@@ -90,7 +90,7 @@
                 alert('Error: no fue posible insertar el recurso.');
             }
         });
-    }
+    };
 
     handlers.updateResource = function() {
         var id = $('#recurso_id').val();
@@ -115,21 +115,25 @@
                 alert('Error: no fue posible actualizar el recurso.');
             }
         });
-    }
+    };
 
     handlers.updateStateResource = function(event) {
         var id = event.target.id;
-        var estado = $('#' + id).data('estado');
+        var estatus = $('#' + id).data('estatus');
         $.ajax({
             type: 'PUT',
-            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/',
+            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/estatus/id/' + id,
             dataType: 'json',
             data: {
                 id: id,
-                estado: estado
+                estatus: estatus
             },
             success: function(response) {
                 alert('El recurso se acutalizó correctamente.');
+                estatus = (response.estatus === 1) ? 'Activo' : 'Inactivo';
+                var estatusVal = (response.estatus === 1) ? '1' : '0';
+                $('#' + id).html(estatus);
+                $('#' + id).data('estatus', estatusVal);
             },
             error: function() {
                 alert('Error: no fue posible actualizar el recurso.');

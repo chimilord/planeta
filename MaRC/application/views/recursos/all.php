@@ -27,7 +27,7 @@
                     <td><?php echo $recurso->sitio; ?></td>
                     <td><?php echo $recurso->contenido; ?></td>
                     <td><?php echo $recurso->domId; ?></td>
-                    <td><a href="javascript:void(0);" id="<?php echo $recurso->id; ?>" class="state-resource" data-estado="<?php echo $recurso->estado; ?>"><?php echo ($recurso->estado) ? 'Activo' : 'Inactivo'; ?></a></td>
+                    <td><a href="javascript:void(0);" id="<?php echo $recurso->id; ?>" class="state-resource" data-estatus="<?php echo $recurso->estatus; ?>"><?php echo ($recurso->estatus) ? 'Activo' : 'Inactivo'; ?></a></td>
                     <td><?php echo anchor("sitios/edit/" . $recurso->id, 'Editar'); ?></td>
                 </tr>
             <?php endforeach; ?>
