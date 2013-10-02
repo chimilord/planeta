@@ -26,12 +26,12 @@
                 <div class="control-group">
                     <label class="control-label" for="contenido">Contenido</label>
                     <div class="controls">
-                        <textarea type="textarea" id="contenido" rows="10" cols="40" name="contenido"></textarea>
+                        <textarea type="textarea" id="contenido" rows="10" cols="80" name="contenido"></textarea>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label class="control-label" for="domId">Id</label>
+                    <label class="control-label" for="domId">Dom id</label>
                     <div class="controls">
                         <input type="text" id="domId" value="" name="domId">
                     </div>
@@ -39,8 +39,22 @@
 
                 <div class="control-group">
                     <div class="controls">
-                        <button type="button" class="btn btn-info" id="create">Crear</button>
-                        <button type="button" class="btn btn-info" id="cancel">Cancelar</button>
+                        <div id="label-toggle-switch">
+                            <label class="label-change-switch">
+                                <div class="label-toggle-switch make-switch switch-small"
+                                     data-on="success" data-off="danger" 
+                                     data-on-label="Activo" data-off-label="Inactivo">
+                                    <input type="checkbox" name="estado" id="estado" checked="checked">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-info btn-small" id="create">Crear</button>
+                        <button type="button" class="btn btn-info btn-small" id="cancel">Cancelar</button>
                     </div>
                 </div>
 

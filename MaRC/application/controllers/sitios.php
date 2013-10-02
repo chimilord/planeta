@@ -19,28 +19,32 @@ class Sitios extends CI_Controller {
         $this->data['recursos'] = $this->recurso_model->get_recursos();
         $this->_render_page('recursos/all', $this->data);
     }
-    
+
     public function create() {
 
         $this->data['title'] = "Create Recurso";
 
         //validate form input
         $this->form_validation->set_rules('sitio', 'Sitio', 'required|xss_clean');
-        $this->form_validation->set_rules('contenido', 'Contenido', 'required|xss_clean');
-        $this->form_validation->set_rules('domId', 'Id', 'required|xss_clean');
+        $this->form_validation->set_rules('contenido', 'Contenido', 'required|trim|xss_clean');
+        $this->form_validation->set_rules('domId', 'Id', 'xss_clean');
+        $this->form_validation->set_rules('estado', 'Estado', 'is_natural');
 
         if ($this->form_validation->run() == true) {
             $sitio = $this->input->post('sitio');
             $contenido = $this->input->post('contenido');
             $domId = $this->input->post('domId');
-        }
-        if ($this->form_validation->run() == true) {
+            $estado = $this->input->post('estado');
+        
             $data = array(
                 "uuid" => gen_uuid(),
                 "sitio" => $sitio,
                 "contenido" => $contenido,
-                "domId" => $domId
+                "domId" => $domId,
+                "estado" => $estado
             );
+            print_r($data);
+            
             $this->recurso_model->create($data);
             $this->session->set_flashdata('message', $this->ion_auth->messages());
             redirect("sitios/create", 'refresh');
@@ -68,6 +72,30 @@ class Sitios extends CI_Controller {
 
             $this->_render_page('recursos/create', $this->data);
         }
+    }
+
+    public function edit($id) {
+        $this->data['title'] = "Editar recurso";
+
+        $recurso = $this->recurso_model->recurso($id);
+        
+        $this->form_validation->set_rules('sitio', 'Sitio', 'required|xss_clean');
+        $this->form_validation->set_rules('contenido', 'Contenido', 'required|xss_clean');
+        $this->form_validation->set_rules('domId', 'Id', 'required|xss_clean');
+        $this->form_validation->set_rules('estado', 'Estado', 'is_natural');
+
+
+        $this->data['recurso'] = $recurso;
+
+        $this->_render_page('recursos/edit', $this->data);
+    }
+    
+    public function activate($id) {
+        
+    }
+    
+    public function deactivate($id) {
+        
     }
 
     public function _render_page($view, $data = null, $render = false) {

@@ -19,6 +19,7 @@
             }
         </style>
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrap-switch.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/docs.css">
         <link rel="stylesheet/less" type="text/css" href="<?php echo base_url(); ?>resources/less/loader.less">
 
@@ -75,18 +76,18 @@
         <div class="container-fluid">
 
             <?php if ($this->ion_auth->logged_in()) { ?>
-            <div class="row-fluid sections">
+                <div class="row-fluid sections">
 
-                <div class="span2">
-                    <div class="sidebar-nav">
-                        <ul class="nav">
-                            <li class="active"><a href="<?php echo base_url("auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
-                            <li><a href="<?php echo base_url("auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
-                            <li><a href="index.html"><i class="icon-white icon-file"></i> <span>Sitios</span></a></li>
-                            <li><a href="<?php echo base_url("sitios/recursos")?>"><i class="icon-white icon-list-alt"></i> <span>Recursos</span></a></li>
-                            <li><a href="<?php echo base_url("auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
-                            <li><a href="index.html"><i class="icon-white icon-wrench"></i> <span>Mantenimiento</span></a></li>
-                        </ul>
+                    <div class="span2">
+                        <div class="sidebar-nav">
+                            <ul class="nav">
+                                <li class="active"><a href="<?php echo base_url("auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
+                                <li><a href="<?php echo base_url("auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
+                                <li><a href="index.html"><i class="icon-white icon-file"></i> <span>Sitios</span></a></li>
+                                <li><a href="<?php echo base_url("sitios/recursos") ?>"><i class="icon-white icon-list-alt"></i> <span>Recursos</span></a></li>
+                                <li><a href="<?php echo base_url("auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
+                                <li><a href="index.html"><i class="icon-white icon-wrench"></i> <span>Mantenimiento</span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 <?php } ?>

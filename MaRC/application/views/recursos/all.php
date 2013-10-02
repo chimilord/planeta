@@ -12,11 +12,12 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th><?php echo "Uuid" ?></th>
-                <th><?php echo "Website" ?></th>
-                <th><?php echo "Contenido" ?></th>
-                <th><?php echo "domId" ?></th>
-                <th><?php echo "Acciones" ?></th>
+                <th>Uuid</th>
+                <th>Website</th>
+                <th>Contenido</th>
+                <th>Dom id</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -26,13 +27,13 @@
                     <td><?php echo $recurso->sitio; ?></td>
                     <td><?php echo $recurso->contenido; ?></td>
                     <td><?php echo $recurso->domId; ?></td>
-                    <td>
-                        <?php echo anchor("resources/edit/" . $recurso->id, 'Editar'); ?> | 
-                        <?php echo anchor("resources/delete/" . $recurso->id, 'Eliminar'); ?>
-                    </td>
+                    <td><a href="javascript:void(0);" id="<?php echo $recurso->id; ?>" class="state-resource" data-estado="<?php echo $recurso->estado; ?>"><?php echo ($recurso->estado) ? 'Activo' : 'Inactivo'; ?></a></td>
+                    <td><?php echo anchor("sitios/edit/" . $recurso->id, 'Editar'); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <p><?php echo anchor("sitios/create", "Crear recurso", array("class" => "btn btn-info btn-small")); ?></p>
 
 </div>

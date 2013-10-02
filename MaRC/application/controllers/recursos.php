@@ -37,10 +37,11 @@ class Recursos extends REST_Controller {
             'uuid' => gen_uuid(),
             'sitio' => $this->post('sitio'),
             'domId' => $this->post('domId'),
-            'contenido' => $this->post('contenido')
+            'contenido' => trim($this->post('contenido')),
+            'estado' => $this->post('estado')
         );
-        
-        $this->db->insert('recurso', $data); 
+
+        $this->db->insert('recurso', $data);
         $this->response($data, 200);
     }
 
@@ -58,12 +59,27 @@ class Recursos extends REST_Controller {
      * Actualiza el recurso con el id especificado.
      */
     function index_put() {
-        $data = new stdClass();
-        $data->id = $this->put('id');
+//        $data = new stdClass();
+//        $data->id = $this->put('id');
+        $this->load->model('recurso_model');
+        $this->load->database();
+        $data = array(
+            'sitio' => $this->put('sitio'),
+            'domId' => $this->put('domId'),
+            'contenido' => trim($this->put('contenido'))
+        );
 
+        $this->db->where('id', $this->put('id'));
+        $this->db->update('recurso', $data);
         $this->response($data, 200);
     }
-    
+
+    function estatus_put() {
+       $data = new stdClass();
+       $data->id = $this->put('id');
+
+       $this->response($data, 200);
+   }
 
 }
 

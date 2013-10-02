@@ -103,7 +103,8 @@
                     <p>Clave: <span class="current-site"></span></p>
 
                     <div class="">
-                        <?php echo anchor('sitios/create', 'Agregar contenido', array('class' => 'btn btn-info')); ?>
+                        <?php echo anchor('sitios/create', 'Agregar recurso', array('class' => 'btn btn-info btn-small')); ?>
+                        <?php echo anchor('sitios/recursos', 'Ver recursos', array('class' => 'btn btn-info btn-small')); ?>
                     </div>
 
                 </div>

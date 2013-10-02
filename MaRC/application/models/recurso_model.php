@@ -53,6 +53,11 @@ class Recurso_model extends CI_Model {
         return $query->result();
     }
 
+    public function recurso($id = NULL) {
+        $query = $this->db->get_where('recurso', array('id' => $id));
+        return $query->row();
+    }
+
 //    public function create($data) {
 //        return $this->db->insert('recurso', $data);
 //    }

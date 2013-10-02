@@ -83,15 +83,15 @@
                         "id" => "edit_user",
                         "type" => "submit",
                         "content" => "Crear",
-                        "class" => "btn btn-info"
+                        "class" => "btn btn-info btn-small"
                     );
                     $data_cancel = array(
                         "name" => "cancel_user",
                         "id" => "cancel_user",
                         "type" => "button",
                         "content" => "Cancelar",
-                        "class" => "btn btn-info",
-                        "style" => "margin-left: 15px;"
+                        "class" => "btn btn-info btn-small",
+                        "style" => "margin-left: 5px;"
                     );
                     echo form_button($data);
                     echo form_button($data_cancel);

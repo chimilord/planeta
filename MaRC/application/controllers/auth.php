@@ -425,7 +425,7 @@ class Auth extends CI_Controller {
 
     //edit a user
     function edit_user($id) {
-        $this->data['title'] = "Edit User";
+        $this->data['title'] = "Editar usuario";
 
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
             redirect('auth', 'refresh');
@@ -471,8 +471,8 @@ class Auth extends CI_Controller {
 
             //update the password if it was posted
             if ($this->input->post('password')) {
-                $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
-                $this->form_validation->set_rules('password_confirm', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+                $this->form_validation->set_rules('password_confirm', 'Confirmar password', 'required');
 
                 $data['password'] = $this->input->post('password');
             }

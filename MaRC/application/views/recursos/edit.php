@@ -1,109 +1,56 @@
 <div class="span10 nomargin well" id="section-actions">
 
     <div class="section-title">
-        <h3>Ususarios</h3>
+        <h3>Recursos</h3>
     </div>
 
     <ul class="breadcrumb">
         <li><a href="<?php echo base_url(); ?>">Home</a> <span class="divider">/</span></li>
-        <li><?php echo anchor('auth/users', 'Usuarios'); ?><span class="divider">/</span></li>
-        <li class="active">Editar usuario</li>
+        <li><?php echo anchor('sitios/recursos', 'Recursos'); ?><span class="divider">/</span></li>
+        <li class="active">Editar recurso</li>
     </ul>
 
     <div class="span6">
-        <?php echo form_open(uri_string()); ?>
+        
+        <form class="form-horizontal" id="edit-resource">
+            <fieldset>
+                <legend>Editar</legend>
 
-        <fieldset>
-            <legend>Editar</legend>
-
-            <div class="control-group">
-                <?php echo form_label("Nombre", "first_name", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($first_name); ?>
+                <div class="control-group">
+                    <label class="control-label" for="sitio">Sitio</label>
+                    <div class="controls">
+                        <input type="text" id="sitio" name="sitio" value="<?php echo $recurso->sitio; ?>">
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Apellidos", "last_name", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($last_name); ?>
+                <div class="control-group">
+                    <label class="control-label" for="contenido">Contenido</label>
+                    <div class="controls">
+                        <textarea type="textarea" id="contenido" rows="10" cols="80" name="contenido">
+                            <?php echo trim($recurso->contenido); ?>
+                        </textarea>
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Username", "username", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($username); ?>
+                <div class="control-group">
+                    <label class="control-label" for="domId">Dom id</label>
+                    <div class="controls">
+                        <input type="text" id="domId" name="domId" value="<?php echo $recurso->domId; ?>">
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Password", "password", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($password); ?>
+                <input type="hidden" id='recurso_id' name="recurso_id" value="<?php echo $recurso->id; ?>">
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="button" class="btn btn-info btn-small" id="update">Actualizar</button>
+                        <button type="button" class="btn btn-info btn-small" id="cancel">Cancelar</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="control-group">
-                <?php echo form_label("Confirmar password", "password_confirm", array("class" => "control-label")); ?>
-                <div class="controls">
-                    <?php echo form_input($password_confirm); ?>
-                </div>
-            </div>
+            </fieldset>
 
-            <span class="help-block">Roles</span>
-            <div class="control-group">
-                <?php foreach ($groups as $group): ?>
-                    <label class="checkbox">
-                        <?php
-                        $gID = $group['id'];
-                        $checked = null;
-                        $item = null;
-                        foreach ($currentGroups as $grp) {
-                            if ($gID == $grp->id) {
-                                $checked = ' checked="checked"';
-                                break;
-                            }
-                        }
-                        ?>
-                        <input type="checkbox" name="groups[]" value="<?php echo $group['id']; ?>"<?php echo $checked; ?>>
-                        <?php echo $group['name']; ?>
-                    </label>
-                <?php endforeach ?>
-            </div>
-
-            <?php echo form_hidden('id', $user->id); ?>
-            <?php echo form_hidden($csrf); ?>
-
-            <div class="control-group">
-                <div class="controls">
-                    <?php
-                    $data = array(
-                        "name" => "edit_user",
-                        "id" => "edit_user",
-                        "type" => "submit",
-                        "content" => "Crear",
-                        "class" => "btn btn-info"
-                    );
-                    $data_cancel = array(
-                        "name" => "cancel_user",
-                        "id" => "cancel_user",
-                        "type" => "button",
-                        "content" => "Cancelar",
-                        "class" => "btn btn-info",
-                        "style" => "margin-left: 15px;"
-                    );
-                    echo form_button($data);
-                    echo form_button($data_cancel);
-                    ?>
-                </div>
-            </div>
-
-        </fieldset>
-
-        <?php echo form_close(); ?>
+        </form>
     </div>
-
-    <div class="span4 errorMessage" id="infoMessage"><?php echo $message; ?></div>
 
 </div>

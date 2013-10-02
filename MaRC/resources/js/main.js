@@ -17,6 +17,8 @@
 
         $('#current-site').hide();
         $('#create-resource #create').click(handlers.createResource);
+        $('#edit-resource #update').click(handlers.updateResource);
+        $('.state-resource').click(handlers.updateStateResource);
 
         /* Login functions */
         errors = $('#infoMessage').find('p').length;
@@ -69,26 +71,72 @@
         var sitio = $('#sitio').val();
         var contenido = $('#contenido').val();
         var domId = $('#domId').val();
+        var estado = ($('#estado').prop('checked')) ? 1 : 0;
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/recursos/',
-            dataType: 'jsonp',
+            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/',
+            dataType: 'json',
             data: {
-                format: 'jsonp',
+                sitio: sitio,
+                contenido: contenido,
+                domId: domId,
+                estado: estado
+            },
+            success: function(response) {
+                alert('El recurso se insertó correctamente.');
+                $('#create-resource').clearForm();
+            },
+            error: function() {
+                alert('Error: no fue posible insertar el recurso.');
+            }
+        });
+    }
+
+    handlers.updateResource = function() {
+        var id = $('#recurso_id').val();
+        var sitio = $('#sitio').val();
+        var contenido = $('#contenido').val();
+        var domId = $('#domId').val();
+        $.ajax({
+            type: 'PUT',
+            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/',
+            dataType: 'json',
+            data: {
+                id: id,
                 sitio: sitio,
                 contenido: contenido,
                 domId: domId
             },
             success: function(response) {
-                alert(response);
+                alert('El recurso se actualizó correctamente.');
+                $('#edit-resource').clearForm();
             },
             error: function() {
-                alert('Error: no fue posible insertr el recurso.');
+                alert('Error: no fue posible actualizar el recurso.');
             }
         });
     }
 
-    handlers.cleanForm = function() { }
+    handlers.updateStateResource = function(event) {
+        var id = event.target.id;
+        var estado = $('#' + id).data('estado');
+        $.ajax({
+            type: 'PUT',
+            url: 'http://localhost/CradyDesign/CentralCMS/MaRC/index.php/recursos/',
+            dataType: 'json',
+            data: {
+                id: id,
+                estado: estado
+            },
+            success: function(response) {
+                alert('El recurso se acutalizó correctamente.');
+            },
+            error: function() {
+                alert('Error: no fue posible actualizar el recurso.');
+            }
+        });
+    };
+
 
 
 })(jQuery);
