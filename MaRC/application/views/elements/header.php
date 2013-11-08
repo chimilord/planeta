@@ -31,6 +31,7 @@
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
         <div class="navbar navbar-inverse navbar-fixed-top">
+            <?php echo base_url(); ?>
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -49,18 +50,18 @@
                                         <li><a href="#"><i class="icon icon-user"></i> <span>Perfil</span></a></li>
                                         <li class="divider"></li>
                                         <?php if ($this->ion_auth->is_admin()) { ?>
-                                            <li><a href="<?php echo base_url(); ?>auth/groups"><i class="icon icon-th-large"></i> <span>Groups</span></a></li>
-                                            <li><a href="<?php echo base_url(); ?>auth/groups"><i class="icon icon-user"></i> <span>Users</span></a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/auth/groups"><i class="icon icon-th-large"></i> <span>Groups</span></a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/auth/groups"><i class="icon icon-user"></i> <span>Users</span></a></li>
                                             <li class="divider"></li>
                                             <!--<li><a href="#">Settings</a></li>-->
                                             <li><a href="#"><i class="icon icon-envelope"></i> <span>Support</span></a></li>
                                             <li class="divider"></li>
-                                            <li><a href="<?php echo base_url(); ?>auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
                                         <?php } else { ?>
                                             <li><a href="#">Settings</a></li>
                                             <li><a href="#">Support</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="<?php echo base_url(); ?>auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/auth/logout"><i class="icon icon-off"></i> <span>Salir</span></a></li>
                                         <?php } ?>
                                     </ul>
                                 </li>
@@ -81,11 +82,11 @@
                     <div class="span2">
                         <div class="sidebar-nav">
                             <ul class="nav">
-                                <li class="active"><a href="<?php echo base_url("auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
-                                <li><a href="<?php echo base_url("auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
+                                <li class="active"><a href="<?php echo base_url("index.php/auth/"); ?>"><i class="icon-white icon-home"></i> <span>Dashboard</span></a></li>
+                                <li><a href="<?php echo base_url("index.php/auth/users"); ?>"><i class="icon-white icon-user"></i> <span>Usuarios</span></a></li>
                                 <li><a href="index.html"><i class="icon-white icon-file"></i> <span>Sitios</span></a></li>
-                                <li><a href="<?php echo base_url("sitios/recursos") ?>"><i class="icon-white icon-list-alt"></i> <span>Recursos</span></a></li>
-                                <li><a href="<?php echo base_url("auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
+                                <li><a href="<?php echo base_url("index.php/sitios/recursos") ?>"><i class="icon-white icon-list-alt"></i> <span>Recursos</span></a></li>
+                                <li><a href="<?php echo base_url("index.php/auth/contact"); ?>"><i class="icon-white icon-envelope"></i> <span>Contacto</span></a></li>
                                 <li><a href="index.html"><i class="icon-white icon-wrench"></i> <span>Mantenimiento</span></a></li>
                             </ul>
                         </div>
